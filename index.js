@@ -15,10 +15,10 @@ class CountdownTimer {
     this.deltaTime = 0;
   }
   start() {
+    this.style();
     setInterval(() => {
       let currentTime = Date.now();
       this.deltaTime = this.targetDate - currentTime;
-      console.log(this.targetDate);
       const days = this.pad(Math.floor(this.deltaTime / (1000 * 60 * 60 * 24)));
       const hours = this.pad(
         Math.floor((this.deltaTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -27,9 +27,7 @@ class CountdownTimer {
         Math.floor((this.deltaTime % (1000 * 60 * 60)) / (1000 * 60))
       );
       const secs = this.pad(Math.floor((this.deltaTime % (1000 * 60)) / 1000));
-      console.log(days, hours, mins, secs);
       this.updateClockface(days, hours, mins, secs);
-      this.style();
     }, 1000);
   }
   pad(value) {
