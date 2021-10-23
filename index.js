@@ -1,18 +1,12 @@
-const refs = {
-  days: document.querySelector('[data-value="days"]'),
-  hours: document.querySelector('[data-value="hours"]'),
-  mins: document.querySelector('[data-value="mins"]'),
-  secs: document.querySelector('[data-value="secs"]'),
-};
-
-const { days, hours, mins, secs } = refs;
-
 class CountdownTimer {
-  constructor({ selector, targetDate, markup }) {
+  constructor({ selector, targetDate }) {
     this.selector = document.querySelector(selector);
     this.targetDate = targetDate;
-    this.markup = markup;
     this.deltaTime = 0;
+    this.days = document.querySelector('[data-value="days"]');
+    this.hours = document.querySelector('[data-value="hours"]');
+    this.mins = document.querySelector('[data-value="mins"]');
+    this.secs = document.querySelector('[data-value="secs"]');
   }
   start() {
     this.style();
@@ -34,10 +28,10 @@ class CountdownTimer {
     return String(value).padStart(2, "0");
   }
   updateClockface(days, hours, mins, secs) {
-    this.markup.days.textContent = `${days}`;
-    this.markup.hours.textContent = `${hours}`;
-    this.markup.mins.textContent = `${mins}`;
-    this.markup.secs.textContent = `${secs}`;
+    this.days.textContent = `${days}`;
+    this.hours.textContent = `${hours}`;
+    this.mins.textContent = `${mins}`;
+    this.secs.textContent = `${secs}`;
   }
   style() {
     this.selector.style.fontFamily = "sans-serif";
@@ -51,7 +45,6 @@ class CountdownTimer {
 const myBirthdayCountdown = new CountdownTimer({
   selector: "#timer-1",
   targetDate: new Date("May 11, 2022"),
-  markup: { days, hours, mins, secs },
 });
 
 myBirthdayCountdown.start();
