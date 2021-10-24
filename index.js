@@ -3,10 +3,10 @@ class CountdownTimer {
     this.selector = document.querySelector(selector);
     this.targetDate = targetDate;
     this.deltaTime = 0;
-    this.days = document.querySelector('[data-value="days"]');
-    this.hours = document.querySelector('[data-value="hours"]');
-    this.mins = document.querySelector('[data-value="mins"]');
-    this.secs = document.querySelector('[data-value="secs"]');
+    this.days = this.selector.querySelector('[data-value="days"]');
+    this.hours = this.selector.querySelector('[data-value="hours"]');
+    this.mins = this.selector.querySelector('[data-value="mins"]');
+    this.secs = this.selector.querySelector('[data-value="secs"]');
   }
   start() {
     this.style();
@@ -47,4 +47,10 @@ const myBirthdayCountdown = new CountdownTimer({
   targetDate: new Date("May 11, 2022"),
 });
 
+const yourBirthdayCountdown = new CountdownTimer({
+  selector: "#timer-2",
+  targetDate: new Date("May 22, 2022"),
+});
+
 myBirthdayCountdown.start();
+yourBirthdayCountdown.start();
